@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: 'src/game.js',
-        dest: 'dist/game.min.js',
+        dest: 'dist/js/game.min.js',
       },
     },
     jshint: {
