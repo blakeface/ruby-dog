@@ -1,3 +1,4 @@
-body {
-  background: blue;
+.container {
+  display: flex;
+  justify-content: center;
 }

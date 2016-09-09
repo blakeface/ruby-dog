@@ -5,12 +5,13 @@ Based on a true story.
 ###To install and run:   
     $ npm i  
     $ grunt   
+    $ grunt watch   
   visit [localhost:8080](localhost:8080)
 
 ###Specs:
 * Grunt
 * Phaser.io
 
-Map built with [Tiled](http://www.mapeditor.org)
-
-Art is either custom or downloaded from [OpenGamerArt.org](http://opengameart.org/)
+Map built with [Tiled](http://www.mapeditor.org)   
+Characters drawn with [Piskel](http://www.piskelapp.com)  
+Other assets from [OpenGamerArt.org](http://opengameart.org/)
