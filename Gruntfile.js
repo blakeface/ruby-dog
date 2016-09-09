@@ -1,6 +1,11 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    watch: {
+      files: ['<%= jshint.files %>'],
+      tasks: ['jshint', 'uglify'],
+      options: { livereload: true },
+    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
@@ -11,7 +16,7 @@ module.exports = function(grunt) {
       },
     },
     jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js'],
+      files: ['Gruntfile.js', 'src/*.js'],
       options: {
         esversion: 6,
         globals: {
@@ -20,10 +25,6 @@ module.exports = function(grunt) {
           module: true,
         },
       },
-    },
-    watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'uglify'],
     },
     connect: {
       server: {
