@@ -1,11 +1,6 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'uglify'],
-      options: { livereload: true },
-    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
@@ -26,6 +21,21 @@ module.exports = function(grunt) {
         },
       },
     },
+    cssmin: {
+      dist: {
+        options: {
+          banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+        },
+        files: {
+          'dist/stylesheets/style.min.css': ['src/*.css'],
+        },
+      },
+    },
+    watch: {
+      files: ['<%= jshint.files %>', 'src/*.css'],
+      tasks: ['jshint', 'uglify', 'cssmin'],
+      options: { livereload: true },
+    },
     connect: {
       server: {
         options: {
@@ -41,6 +51,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['jshint', 'uglify', 'connect']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'connect']);
 };
