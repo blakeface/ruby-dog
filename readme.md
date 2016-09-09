@@ -4,8 +4,7 @@ Based on a true story.
 
 ###To install and run:   
     $ npm i  
-    $ grunt   
-    $ grunt watch   
+    $ npm start   
   visit [localhost:8080](localhost:8080)
 
 ###Specs:
