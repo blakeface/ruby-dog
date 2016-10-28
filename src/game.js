@@ -29,7 +29,8 @@
     floors.resizeWorld();
 
     const front = game.add.sprite(300, 450, 'front');
-    const walk = front.animations.add('walk');
+
+    front.animations.add('walk');
     front.animations.play('walk', 30, true);
 
 

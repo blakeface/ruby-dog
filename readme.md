@@ -12,5 +12,5 @@ Based on a true story.
 * Phaser.io
 
 Map built with [Tiled](http://www.mapeditor.org)   
-Characters drawn with [Piskel](http://www.piskelapp.com)  
+Characters drawn with [Piskel](http://www.piskelapp.com) and animated with [TexturePacker](https://www.codeandweb.com/texturepacker)
 Other assets from [OpenGamerArt.org](http://opengameart.org/)
