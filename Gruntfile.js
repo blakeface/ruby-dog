@@ -1,15 +1,6 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-      },
-      build: {
-        src: 'src/game.js',
-        dest: 'dist/js/game.min.js',
-      },
-    },
     jshint: {
       files: ['Gruntfile.js', 'src/*.js'],
       options: {
@@ -20,6 +11,19 @@ module.exports = function(grunt) {
           module: true,
         },
       },
+    },
+    babel: {
+      options: {
+        presets: ['babel-preset-es2015'],
+        babelrc: false,
+        comments: false,
+        minified: true,
+      },
+      dist: {
+        files: {
+          'dist/js/game.min.js': 'src/game.js'
+        }
+      }
     },
     cssmin: {
       dist: {
@@ -33,7 +37,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['<%= jshint.files %>', 'src/*.css'],
-      tasks: ['jshint', 'uglify', 'cssmin'],
+      tasks: ['jshint', 'babel', 'cssmin'],
       options: { livereload: true },
     },
     connect: {
@@ -48,10 +52,10 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'connect']);
+  grunt.registerTask('default', ['jshint', 'babel', 'cssmin', 'connect']);
 };
